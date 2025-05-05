@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import type { CastMember } from "../types";
 import { getImageUrl } from "../api";
 
@@ -8,9 +8,15 @@ interface MovieCastProps {
 }
 
 const MovieCast: React.FC<MovieCastProps> = ({ cast, totalCastCount }) => {
+  const [showAllCast, setShowAllCast] = useState(false);
+
   if (cast.length === 0) return null;
 
-  const actorsToShow = cast.sort((a, b) => a.order - b.order).slice(0, 10);
+  const sortedCast = cast.sort((a, b) => a.order - b.order);
+  const initialActorsToShow = 10;
+  const actorsToShow = showAllCast
+    ? sortedCast
+    : sortedCast.slice(0, initialActorsToShow);
 
   return (
     <div className="mt-12 px-4">
@@ -54,14 +60,14 @@ const MovieCast: React.FC<MovieCastProps> = ({ cast, totalCastCount }) => {
             </p>
           </div>
         ))}
-        {totalCastCount > actorsToShow.length && (
+        {totalCastCount > initialActorsToShow && (
           <div className="flex items-center justify-center flex-shrink-0 w-32">
             <button
-              onClick={(e) => e.preventDefault()}
+              onClick={() => setShowAllCast(!showAllCast)}
               className="text-teal-400 hover:text-teal-300 text-sm font-semibold p-4 text-center"
               type="button"
             >
-              See all...
+              {showAllCast ? "See less..." : "See all..."}{" "}
             </button>
           </div>
         )}

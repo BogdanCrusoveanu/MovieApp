@@ -9,11 +9,11 @@ namespace MovieAppApi.Controllers
 {
     [Route("api/movies/{movieId}/comments")]
     [ApiController]
-    public class CommentsController : ControllerBase
+    public class CommentController : ControllerBase
     {
         private readonly ICommentService _commentService;
 
-        public CommentsController(ICommentService commentService)
+        public CommentController(ICommentService commentService)
         {
             _commentService = commentService;
         }
