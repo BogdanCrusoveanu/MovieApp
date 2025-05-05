@@ -1,0 +1,81 @@
+# Node.js dependencies
+node_modules/
+
+# Build output
+build/
+dist/
+.next/
+out/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env*
+!.env.example
+!.env.development.local
+!.env.test.local
+!.env.production.local
+
+# IDE / Editor directories
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio cache files
+.vs/
+*.csproj.user
+*.vbproj.user
+
+# Rider files
+.idea/
+
+# VS Code files
+.vscode/
+
+# Mac files
+.DS_Store
+
+# Windows thumbnail cache files
+Thumbs.db
+
+# Build results of an ATL Project
+[Dd]ebug/
+[Rr]elease/
+_UpgradeReport_Files/
+
+# NuGet Packages
+packages/
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+**/[Pp]ackages/*
+# except build/, which is used as an MSBuild target.
+!**/[Pp]ackages/build/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/[Pp]ackages/repositories.config
+
+# Windows Installer files
+*.msi
+*.msm
+*.msp
+
+# Log files
+*.log

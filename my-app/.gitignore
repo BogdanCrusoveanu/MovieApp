@@ -1,0 +1,30 @@
+# Node.js dependencies
+node_modules/
+
+# Build output
+build/
+dist/
+.next/
+out/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env*
+!.env.example
+!.env.development.local
+!.env.test.local
+!.env.production.local
+
+# IDE / Editor directories
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
