@@ -22,11 +22,9 @@ namespace MovieAppApi.Tests
         {
             _mockCommentService = new Mock<ICommentService>();
 
-            // Mock HttpContext and User claims for authorized actions
             var user = new ClaimsPrincipal(new ClaimsIdentity(new Claim[]
             {
                 new Claim(ClaimTypes.NameIdentifier, TestUserId),
-                // Add other claims if needed, e.g., roles
             }, "mock"));
 
             _controller = new CommentController(_mockCommentService.Object)

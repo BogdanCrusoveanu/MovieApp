@@ -22,13 +22,11 @@ namespace MovieAppApi.Tests
         {
             _mockCommentRepo = new Mock<ICommentRepository>();
 
-            // Mock UserManager
             var store = new Mock<IUserStore<ApplicationUser>>();
             _mockUserManager = new Mock<UserManager<ApplicationUser>>(store.Object, null, null, null, null, null, null, null, null);
 
             _commentService = new CommentService(_mockCommentRepo.Object, _mockUserManager.Object);
 
-            // Setup default UserManager behavior
             _mockUserManager.Setup(x => x.FindByIdAsync(TestUserId))
                             .ReturnsAsync(new ApplicationUser { Id = TestUserId, UserName = TestUsername });
             _mockUserManager.Setup(x => x.FindByIdAsync("non-existent-user"))
@@ -65,7 +63,6 @@ namespace MovieAppApi.Tests
         [InlineData(null)]
         [InlineData("")]
         [InlineData(" ")]
-        // We skip the > 1000 char test as per requirement "do not test long strings"
         public async Task AddCommentAsync_InvalidText_ReturnsValidationError(string invalidText)
         {
             // Act
@@ -179,7 +176,7 @@ namespace MovieAppApi.Tests
             _mockCommentRepo.Setup(r => r.GetByIdAsync(TestCommentId)).ReturnsAsync(existingComment);
 
             // Act
-            var result = await _commentService.UpdateCommentAsync(TestCommentId, TestUserId, newText); // TestUserId tries to update another user's comment
+            var result = await _commentService.UpdateCommentAsync(TestCommentId, TestUserId, newText); 
 
             // Assert
             Xunit.Assert.Equal(CommentOperationResult.Forbidden, result);
@@ -227,7 +224,7 @@ namespace MovieAppApi.Tests
             _mockCommentRepo.Setup(r => r.GetByIdAsync(TestCommentId)).ReturnsAsync(existingComment);
 
             // Act
-            var result = await _commentService.DeleteCommentAsync(TestCommentId, TestUserId); // TestUserId tries to delete another user's comment
+            var result = await _commentService.DeleteCommentAsync(TestCommentId, TestUserId); 
 
             // Assert
             Xunit.Assert.Equal(CommentOperationResult.Forbidden, result);

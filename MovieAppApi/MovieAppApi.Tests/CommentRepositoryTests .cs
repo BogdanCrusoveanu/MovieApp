@@ -14,7 +14,6 @@ namespace MovieAppApi.Tests
 
         public CommentRepositoryTests()
         {
-            // Use a unique database name for each test run to prevent interference
             _options = new DbContextOptionsBuilder<ApplicationDbContext>()
                 .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
                 .Options;
@@ -24,7 +23,6 @@ namespace MovieAppApi.Tests
 
         public void Dispose()
         {
-            // Ensure the database is deleted after each test
             _context.Database.EnsureDeleted();
             _context.Dispose();
             GC.SuppressFinalize(this);
@@ -157,10 +155,6 @@ namespace MovieAppApi.Tests
             Xunit.Assert.NotNull(commentToUpdate); // Ensure it exists before update
             commentToUpdate.Text = "Updated Text";
 
-            // Act: Detach the tracked entity before calling UpdateAsync if needed,
-            // or just call UpdateAsync if it handles attaching/modifying state.
-            // The current implementation uses _context.Entry(comment).State = Modified;
-            // So we need to ensure the entity passed is the one to be updated.
             var result = await _repository.UpdateAsync(commentToUpdate);
             var updatedCommentInDb = await _context.Comments.AsNoTracking().FirstOrDefaultAsync(c => c.Id == commentIdToUpdate);
 
