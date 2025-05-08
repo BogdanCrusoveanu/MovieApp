@@ -1,5 +1,5 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from "axios";
-import { logout, tokenRefreshed } from "./features/auth/authSlice";
+import { logout, tokenRefreshed } from "./redux/slices/authSlice";
 import type {
   Movie,
   MovieDetails,
@@ -17,7 +17,7 @@ import type {
   RefreshTokenRequest,
   RefreshTokenResponse,
 } from "./types";
-import store from "./store";
+import store from "./redux/store";
 
 const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 const TMDB_BASE_URL = process.env.REACT_APP_TMDB_BASE_URL;

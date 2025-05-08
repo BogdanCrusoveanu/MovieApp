@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import type { RootState, AppDispatch } from "./store";
-import { logout } from "./features/auth/authSlice";
+import type { RootState, AppDispatch } from "./redux/store";
+import { logout } from "./redux/slices/authSlice";
 import NavBar from "./components/NavBar";
 import AppRoutes from "./AppRoutes";
 

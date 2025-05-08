@@ -14,7 +14,7 @@ import type {
   CreateCommentPayload,
   UpdateCommentPayload,
 } from "../types";
-import type { RootState } from "../store";
+import type { RootState } from "../redux/store";
 import LoadingSpinner from "./LoadingSpinner";
 import ErrorMessage from "./ErrorMessage";
 

@@ -2,7 +2,7 @@ import React, { useState, FormEvent } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../api";
-import type { AppDispatch, RootState } from "../store";
+import type { AppDispatch, RootState } from "../redux/store";
 import type { LoginPayload } from "../types";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorMessage from "../components/ErrorMessage";
@@ -10,7 +10,7 @@ import {
   loginFailure,
   loginStart,
   loginSuccess,
-} from "../features/auth/authSlice";
+} from "../redux/slices/authSlice";
 
 const LoginPage: React.FC = () => {
   const [identifier, setIdentifier] = useState("");

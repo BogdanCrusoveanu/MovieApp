@@ -2,7 +2,7 @@ import React, { useState, FormEvent } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signupUser } from "../api";
-import type { AppDispatch, RootState } from "../store";
+import type { AppDispatch, RootState } from "../redux/store";
 import type { RegisterPayload } from "../types";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorMessage from "../components/ErrorMessage";
@@ -10,7 +10,7 @@ import {
   signupFailure,
   signupStart,
   signupSuccess,
-} from "../features/auth/authSlice";
+} from "../redux/slices/authSlice";
 
 const SignupPage: React.FC = () => {
   const [username, setUsername] = useState("");
